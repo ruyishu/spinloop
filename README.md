@@ -83,4 +83,6 @@ spinloop eval --adapter runs/core/seed-2026/single-spin --depth 1 --dtype bf16 \
 
 The second command provides a starting point for compute matching, not a preselected budget. Calibrate sample count on the development set using measured prefill and decode time on the same GPU. Voting uses parsed answers and breaks ties by first occurrence. Set the sample count and temperature before test evaluation. The benchmark uses fixed input length, generated length, batch size 1, and a warmup. Per-question output records sampled answers, timing, length, format failure, and truncation. Run summaries include dataset and adapter hashes, runtime versions, GPU and peak memory, with supervised and processed tokens logged for training.
 
+Use `spinloop eval --score-prefix` to separately record NLL and next-token correctness on identical gold answer prefixes. This requires examples with solutions, and the prefix-scoring pass is outside the generation timings.
+
 The TaH/TaH2 public checkpoints can be evaluated separately with their [official runner](https://github.com/thu-nics/TaH). Their training data, iteration policy, and inference stack differ. The matched in-repo LoRA and constant-rotation groups support the controlled comparisons.

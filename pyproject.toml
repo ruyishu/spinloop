@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spinloop-research"
+version = "0.1.0"
+description = "Frozen Qwen3 recurrent depth with shared Cayley rotations"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.4", "transformers>=4.57.1,<6", "safetensors>=0.4.5"]
+
+[project.optional-dependencies]
+datasets = ["datasets>=3,<6"]
+test = ["pytest>=8"]
+
+[project.scripts]
+spinloop = "spinloop.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
